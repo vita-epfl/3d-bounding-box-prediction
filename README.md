@@ -39,8 +39,8 @@ This project uses the [Joint Track Auto (JTA)](https://github.com/fabbrimatteo/J
 ![](/images/network_diag.png)
 
 ## Results
-![JTA](/images/test_seq_478_frame177_idx17500.gif=100x80)
-![NuScenes](/images/test_scene-0593_frame0_idx35.gif=100x80)
+![JTA](/images/test_seq_478_frame177_idx17500.gif)
+![NuScenes](/images/test_scene-0593_frame0_idx35.gif)
 
 
 ## Setup

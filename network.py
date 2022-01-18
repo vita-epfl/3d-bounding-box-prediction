@@ -21,9 +21,7 @@ class PV_LSTM(nn.Module):
         self.speed_decoder    = nn.LSTMCell(input_size=self.size, hidden_size=args.hidden_size)
         self.pos_decoder    = nn.LSTMCell(input_size=self.size, hidden_size=args.hidden_size)
         self.fc_speed    = nn.Linear(in_features=args.hidden_size, out_features=self.size)
-        
-        self.softmax = nn.Softmax(dim=1)
-        
+              
         self.args = args
         
     def forward(self, speed=None, pos=None, average=False):
@@ -46,32 +44,10 @@ class PV_LSTM(nn.Module):
             cds = cpo + csp
             for i in range(self.args.output//self.args.skip):
                 hds, cds         = self.speed_decoder(in_sp, (hds, cds))
-                #speed_output     = self.hardtanh(self.fc_speed(hds))
                 speed_output     = self.fc_speed(hds)
                 speed_outputs    = torch.cat((speed_outputs, speed_output.unsqueeze(1)), dim = 1)
-                in_sp            = speed_output.detach()
                 
             outputs.append(speed_outputs)
-
-        if 'intention' in self.args.task:
-            crossing_outputs = torch.tensor([], device=self.args.device)
-            in_cr = pos[:,-1,:]
-            
-            hdc = hpo + hsp
-            cdc = cpo + csp
-            for i in range(self.args.output//self.args.skip):
-                hdc, cdc         = self.crossing_decoder(in_cr, (hdc, cdc))
-                crossing_output  = self.fc_crossing(hdc)
-                in_cr            = self.pos_embedding(hdc).detach()
-                crossing_output  = self.softmax(crossing_output)
-                crossing_outputs = torch.cat((crossing_outputs, crossing_output.unsqueeze(1)), dim = 1)
-
-            outputs.append(crossing_outputs)
-        
-        if average:
-            crossing_labels = torch.argmax(crossing_outputs, dim=2)
-            intention = crossing_labels[:,-1]
-            outputs.append(intention)
             
         #return tuple(outputs)
         return outputs[0]

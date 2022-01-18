@@ -15,24 +15,24 @@ This project uses the [Joint Track Auto (JTA)](https://github.com/fabbrimatteo/J
 
 ## Repository structure
 ```
-|---- 3d-bounding-box-prediction          : Project repository
-      |---- exploration                   : Jupyter notebooks for data exploration and visualization
-            |---- JTA_exploration.ipynb   
-            |---- NuScenes_exploration.ipynb
-      |---- preprocess                    : Scripts for preprocessing
-            |---- jta_preprocessor.py
-            |---- nu_preprocessor.py
-            |---- split.py
-      |---- utils                         : Scripts containing necessary calculations
-            |---- utils.py  
-            |---- nuscenes.py
-      |---- visualization                 : Scripts for visualizing the results and making GIFs
-            |---- visualize.py
-      |---- Dataloader.py                 : Script for loading preprocessed data
-      |---- network.py                    : Script containing network 
-      |---- network_pos_decoder.py        : Script containing network variation that has a position decoder (not used)
-      |---- test.py                       : Script for testing
-      |---- train.py                      : Script for training 
+|--- 3d-bounding-box-prediction          : Project repository
+      |--- exploration                   : Jupyter notebooks for data exploration and visualization
+            |--- JTA_exploration.ipynb   
+            |--- NuScenes_exploration.ipynb
+      |--- preprocess                    : Scripts for preprocessing
+            |--- jta_preprocessor.py
+            |--- nu_preprocessor.py
+            |--- split.py
+      |--- utils                         : Scripts containing necessary calculations
+            |--- utils.py  
+            |--- nuscenes.py
+      |--- visualization                 : Scripts for visualizing the results and making GIFs
+            |--- visualize.py
+      |--- Dataloader.py                 : Script for loading preprocessed data
+      |--- network.py                    : Script containing network 
+      |--- network_pos_decoder.py        : Script containing network variation that has a position decoder (not used)
+      |--- test.py                       : Script for testing
+      |--- train.py                      : Script for training 
 ```
 
 ## Proposed network

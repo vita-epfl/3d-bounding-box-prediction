@@ -42,15 +42,14 @@ This project uses the [Joint Track Auto (JTA)](https://github.com/fabbrimatteo/J
 ![JTA](/images/test_seq_478_frame177_idx17500.gif)
 ![NuScenes](/images/test_scene-0593_frame0_idx35.gif)
 
-
 ## Setup
 Please install the required dependencies from the <requirements.txt> file.
-For Nuscenes, scripts in the folder <nuscenes-devkit/python-sdk/nuscenes> are required.
+For Nuscenes, clone the ```nuscenes-devkit``` repository from [here](https://github.com/nutonomy/nuscenes-devkit). The scripts in the folder <nuscenes-devkit/python-sdk/nuscenes> are required, so it is recommended to copy this folder to the ```3d-bounding-box-prediction```, otherwise path dependencies may need to be updated.
 
-## Jupyter notebooks
-The Jupyter notebooks provided demonstrate how all the code in this repository can be used.
-
-## Data loading notes
+## Preprocessing
 The input, output, stride, and skip parameters of the loaded dataset can be set the in the '''args''' class.
 To load the datasets, first run the preprocessing scripts, then ```Dataloader.py```.
-**Note** Due to the large number of samples of the JTA dataset, the preprocessing script first saves files containing all available samples. This data can then be read by the ```Dataloader.py``` file to get sequences of bounding boxes that are passed to the network.
+**Note** Due to the large number of samples in the JTA dataset, the preprocessing script first saves files containing all available samples to a file titled "Preprocesed annotations". This data can then be read by the ```Dataloader.py``` file to get sequences of bounding boxes that are passed to the network. For Nuscenes the sequences are generated directly during preprocessing.
+
+## Jupyter notebooks
+The Jupyter notebooks provided demonstrate how all the code in this repository can be used, including data loading, training, testing, and visualization.

@@ -49,6 +49,7 @@ For Nuscenes, clone the ```nuscenes-devkit``` repository from [here](https://git
 ## Preprocessing
 The input, output, stride, and skip parameters of the loaded dataset can be set the in the '''args''' class.
 To load the datasets, first run the preprocessing scripts, then ```Dataloader.py```.
+
 **Note** Due to the large number of samples in the JTA dataset, the preprocessing script first saves files containing all available samples to a file titled "Preprocesed annotations". This data can then be read by the ```Dataloader.py``` file to get sequences of bounding boxes that are passed to the network. For Nuscenes the sequences are generated directly during preprocessing.
 
 ## Jupyter notebooks
